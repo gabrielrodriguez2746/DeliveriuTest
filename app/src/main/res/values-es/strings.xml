@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Message the user gets when the application is launched -->
+    <string name="welcome_msg">Bienvenivenido al mejor servicio de entregas</string>
+    <!--Warning Internet Connection-->
+    <string name="warning_net">Problemas de Red</string>
+    <!--Checking Internet Connection-->
+    <string name="net">Lo siento, usted no posee una conexión de red activa o tiene un problema con la misma.</string>
+    <!--Exit Application-->
+    <string name="exit">Salir</string>
+    <!--Retry After Checking Connection-->
+    <string name="retry">Reintentar</string>
+</resources>

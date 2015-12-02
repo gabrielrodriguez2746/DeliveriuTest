@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Deliveriu Test</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <!--App Name-->
+    <string name="app_name">Deliver Menu</string>
+    <!-- Message the user gets when the application is launched -->
+    <string name="welcome_msg">Welcome to the best Delivery Service</string>
+    <!--Confirmation Title-->
+    <string name="confirmation_title">Confirmation</string>
+    <!--Warning Internet Connection-->
+    <string name="warning_net">Network problem</string>
+    <!-- Checking Internet Connection -->
+    <string name="net">Sorry, You don\'t have an Active \n Internet Connection \n Or your device
+        may have \network problem.</string>
+    <!-- Exit Application -->
+    <string name="exit">Exit</string>
+    <!-- Retry After Checking Connection -->
+    <string name="retry">Retry</string>
 
 </resources>
