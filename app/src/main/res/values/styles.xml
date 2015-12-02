@@ -5,4 +5,24 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <declare-styleable name="CustomTextView">
+        <attr name="customFont" format="string" />
+    </declare-styleable>
+
+    <style name="TitleCapsFont">
+        <item name="customFont">@string/title_caps_font</item>
+        <item name="android:textSize">@dimen/title_caps_font</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
+    <style name="TitleDemiFont">
+        <item name="customFont">@string/title_demi_font</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
+    <style name="TitleBookFont">
+        <item name="customFont">@string/title_book_font</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
 </resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Font paths -->
+    <string name="title_caps_font" translatable="false">fonts/BLANCH_CAPS.otf</string>
+    <string name="title_demi_font" translatable="false">fonts/ITCAvantGardeStd-Demi.otf</string>
+    <string name="title_book_font" translatable="false">fonts/ITCAvantGardeStd-Bk.otf</string>
+
+</resources>
