@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/login_margin"
+    android:paddingRight="@dimen/login_margin">
+
+    <grodriguez.com.deliveriutest.widget.CustomButton
+        android:id="@+id/fb_login"
+        style="@style/TitleBookFont"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/view_margin"
+        android:adjustViewBounds="true"
+        android:background="@drawable/facebook_button_selector"
+        android:drawableLeft="@drawable/facebook_letter"
+        android:drawablePadding="@dimen/fb_btn_left_padding"
+        android:paddingLeft="@dimen/fb_btn_left_padding"
+        android:paddingRight="@dimen/fb_btn_left_padding"
+        android:text="@string/join_fb"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <grodriguez.com.deliveriutest.widget.CustomEditText
+        android:id="@+id/email"
+        style="@style/TitleBookFont"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/transparent_white"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="@dimen/view_margin" />
+
+    <grodriguez.com.deliveriutest.widget.CustomEditText
+        android:id="@+id/password"
+        style="@style/TitleBookFont"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/view_margin"
+        android:background="@color/transparent_white"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:padding="10dp" />
+
+    <grodriguez.com.deliveriutest.widget.CustomButton
+        android:id="@+id/register_button"
+        style="@style/TitleBookFont"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/gradient_red_button_selector"
+        android:paddingLeft="@dimen/fb_btn_left_padding"
+        android:paddingRight="@dimen/fb_btn_left_padding"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/view_margin" />
+
+</LinearLayout>

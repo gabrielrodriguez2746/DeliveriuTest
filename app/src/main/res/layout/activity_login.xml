@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="grodriguez.com.deliveriutest.activities.LoginActivity">
+
+    <grodriguez.com.deliveriutest.widget.CustomTextView
+        android:id="@+id/message"
+        style="@style/TitleCapsFont"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:gravity="center_horizontal"
+        android:paddingLeft="@dimen/fb_btn_left_padding"
+        android:paddingRight="@dimen/fb_btn_left_padding"
+        android:text="@string/register_message" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <include layout="@layout/resgister_sigin_layout" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/bottom_lay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center"
+        android:background="@color/transparent_black"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <grodriguez.com.deliveriutest.widget.CustomTextView
+            android:id="@+id/without_register"
+            style="@style/TextNormalFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/view_margin"
+            android:gravity="center"
+            android:text="@string/without_register"
+            android:textColor="@color/white"
+            android:textSize="@dimen/login_screen_bottom_text_size" />
+
+        <grodriguez.com.deliveriutest.widget.CustomTextView
+            android:id="@+id/sign_up"
+            style="@style/TextNormalFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/sign_up"
+            android:textColor="@color/white"
+            android:textSize="@dimen/login_screen_bottom_text_size" />
+    </LinearLayout>
+
+
+</RelativeLayout>

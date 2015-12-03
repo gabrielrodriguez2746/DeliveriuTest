@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -14,6 +15,8 @@ import grodriguez.com.deliveriutest.listeners.OnConfirmationDialogClickListener;
 import grodriguez.com.deliveriutest.utils.Constants;
 
 public class SplashActivity extends FragmentActivity implements OnConfirmationDialogClickListener {
+
+    private final String LOG_TAG = getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,8 @@ public class SplashActivity extends FragmentActivity implements OnConfirmationDi
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent splashIntent = new Intent(SplashActivity.this, MainActivity.class);
+                    Log.d(LOG_TAG, "Before Running Login Activity");
+                    Intent splashIntent = new Intent(SplashActivity.this, LoginActivity.class);
                     startActivity(splashIntent);
                     this.finish();
                 }
