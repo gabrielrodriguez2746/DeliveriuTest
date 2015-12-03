@@ -11,4 +11,14 @@
     <string name="exit">Salir</string>
     <!--Retry After Checking Connection-->
     <string name="retry">Reintentar</string>
+    <!--Facebook Button Message-->
+    <string name="join_fb">Inicia sesión con Facebook</string>
+    <!--Register-->
+    <string name="login">Iniciar Sesión</string>
+    <string name="register">Registrate</string>
+    <string name="password">Contraseña</string>
+    <!--Register Message-->
+    <string name="register_message">Comienza tu experiencia</string>
+    <string name="without_register">Entre sin registrarse</string>
+    <string name="sign_up">¿Todavía no eres miembro? <b>¡REGISTARTE!</b></string>
 </resources>

@@ -3,4 +3,13 @@
 
     <color name="text_color">#6D6E71</color>
     <color name="white">#ffffff</color>
+    <!--Transparent Colors-->
+    <color name="transparent_white">#e1ffffff</color>
+    <color name="transparent_black">#be232323</color>
+    <color name="transparent_red">#64ff0000</color>
+    <!--Facebook Button Color-->
+    <color name="com_facebook_blue_pressed">#8b9dc3</color>
+    <!-- Application button colors -->
+    <color name="red_button_start">#ff6b35</color>
+    <color name="red_button_end">#f42434</color>
 </resources>

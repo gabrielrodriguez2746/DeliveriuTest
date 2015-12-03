@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/top"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/action_bar_height"
+    android:background="@drawable/action_bar">
+
+    <ImageButton
+        android:id="@+id/backbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/button_pressed_selector"
+        android:padding="10dp"
+        android:src="@drawable/ic_back_button"
+        android:tint="@color/white"
+        android:visibility="invisible" />
+
+    <grodriguez.com.deliveriutest.widget.CustomTextView
+        android:id="@+id/action_bar_title"
+        style="@style/TitleDemiFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:ellipsize="marquee"
+        android:freezesText="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/action_bar_title_size" />
+
+</RelativeLayout>

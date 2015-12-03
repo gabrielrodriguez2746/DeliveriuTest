@@ -9,6 +9,18 @@
     <dimen name="action_bar_title_size">18sp</dimen>
     <!-- Confirmation dialog-->
     <dimen name="confirmation_message_text_size">16sp</dimen>
+    <!-- Buttons -->
+    <dimen name="button_corner_radius">10dp</dimen>
+    <dimen name="small_button_corner_radius">5dp</dimen>
+    <dimen name="button_shadow_radius">10dp</dimen>
+    <dimen name="button_shadow_height">3dp</dimen>
 
+    <!--Custom Facebook Button -->
+    <dimen name="fb_btn_left_padding">16dp</dimen>
+    <!--Login Text Size-->
+    <dimen name="login_screen_bottom_text_size">15sp</dimen>
+    <!--Login margin-->
+    <dimen name="login_margin">60dp</dimen>
+    <dimen name="view_margin">10dp</dimen>
 
 </resources>
