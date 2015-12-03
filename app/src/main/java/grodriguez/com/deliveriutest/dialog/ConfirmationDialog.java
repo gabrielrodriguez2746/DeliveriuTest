@@ -26,33 +26,40 @@ public class ConfirmationDialog extends Dialog implements View.OnClickListener {
                               OnConfirmationDialogClickListener onConfirmationDialogClickListener) {
         super(context);
         this.onConfirmationDialogClickListener = onConfirmationDialogClickListener;
-        showDialog(null, message, null, null);
+        showDialog(null, message, null, null, false);
     }
 
     public ConfirmationDialog(Context context, String title, String message,
                               OnConfirmationDialogClickListener onConfirmationDialogClickListener) {
         super(context);
         this.onConfirmationDialogClickListener = onConfirmationDialogClickListener;
-        showDialog(title, message, null, null);
+        showDialog(title, message, null, null, false);
     }
 
     public ConfirmationDialog(Context context, String buttonYes, String buttonNo,
                               String message, OnConfirmationDialogClickListener onConfirmationDialogClickListener) {
         super(context);
         this.onConfirmationDialogClickListener = onConfirmationDialogClickListener;
-        showDialog(null, message, buttonYes, buttonNo);
+        showDialog(null, message, buttonYes, buttonNo, false);
     }
 
     public ConfirmationDialog(Context context, String title, String buttonYes, String buttonNo,
                               String message, OnConfirmationDialogClickListener onConfirmationDialogClickListener) {
         super(context);
         this.onConfirmationDialogClickListener = onConfirmationDialogClickListener;
-        showDialog(title, message, buttonYes, buttonNo);
+        showDialog(title, message, buttonYes, buttonNo, false);
+    }
+
+    public ConfirmationDialog(Context context, String message, boolean buttonDisappear,
+                              OnConfirmationDialogClickListener onConfirmationDialogClickListener) {
+        super(context);
+        this.onConfirmationDialogClickListener = onConfirmationDialogClickListener;
+        showDialog(null, message, null, null, buttonDisappear);
     }
 
 
-
-    private void showDialog(String title, String message, String buttonYes, String buttonNo) {
+    private void showDialog(String title, String message, String buttonYes, String buttonNo,
+                            boolean buttonDisappear) {
         if (FieldValidator.isValid(message)) {
             requestWindowFeature(Window.FEATURE_NO_TITLE);
             setContentView(R.layout.dialog_confirmation);
@@ -73,6 +80,8 @@ public class ConfirmationDialog extends Dialog implements View.OnClickListener {
                 yes.setText(buttonYes);
             if (FieldValidator.isValid(buttonNo))
                 no.setText(buttonNo);
+            if (buttonDisappear)
+                no.setVisibility(View.GONE);
             yes.setOnClickListener(this);
             no.setOnClickListener(this);
 
