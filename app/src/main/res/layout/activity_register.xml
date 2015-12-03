@@ -1,0 +1,99 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="grodriguez.com.deliveriutest.activities.RegisterActivity">
+
+    <include
+        android:id="@+id/actionbar"
+        layout="@layout/actionbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height"
+        android:layout_alignParentTop="true" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <grodriguez.com.deliveriutest.widget.CustomEditText
+                android:id="@+id/name"
+                style="@style/TitleBookFont"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_marginBottom="@dimen/view_margin"
+                android:background="@color/white"
+                android:hint="@string/name"
+                android:padding="10dp"
+                android:singleLine="true" />
+
+            <grodriguez.com.deliveriutest.widget.CustomEditText
+                android:id="@+id/email"
+                style="@style/TitleBookFont"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_marginBottom="@dimen/view_margin"
+                android:background="@color/white"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="10dp" />
+
+            <grodriguez.com.deliveriutest.widget.CustomEditText
+                android:id="@+id/password"
+                style="@style/TitleBookFont"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_marginBottom="@dimen/view_margin"
+                android:background="@color/white"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:padding="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/view_margin"
+        android:paddingLeft="@dimen/join_button"
+        android:paddingRight="@dimen/join_button">
+
+        <grodriguez.com.deliveriutest.widget.CustomButton
+            android:id="@+id/join"
+            style="@style/TitleBookFont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/gradient_red_button_selector"
+
+            android:text="@string/join"
+            android:textColor="@color/white" />
+    </FrameLayout>
+
+</RelativeLayout>

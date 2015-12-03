@@ -8,6 +8,11 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.parse.Parse;
+import com.parse.ParseACL;
+import com.parse.ParseAnonymousUtils;
+import com.parse.ParseUser;
+
 import grodriguez.com.deliveriutest.R;
 import grodriguez.com.deliveriutest.dialog.ConfirmationDialog;
 import grodriguez.com.deliveriutest.helpers.ConnectionManager;
@@ -25,6 +30,11 @@ public class SplashActivity extends FragmentActivity implements OnConfirmationDi
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this, getString(R.string.parse_application_id),
+                getString(R.string.parse_client_key));
+        ParseUser.enableAutomaticUser();
+        ParseACL defaultACL = new ParseACL();
 
         if (ConnectionManager.isConnected(this)) {
             /**
@@ -33,14 +43,23 @@ public class SplashActivity extends FragmentActivity implements OnConfirmationDi
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Log.d(LOG_TAG, "Before Running Login Activity");
-                    Intent splashIntent = new Intent(SplashActivity.this, LoginActivity.class);
-                    startActivity(splashIntent);
-                    this.finish();
-                }
-
-                private void finish() {
-
+                    Log.d(LOG_TAG, "Checking if the user is login");
+                    if (ParseAnonymousUtils.isLinked(ParseUser.getCurrentUser())) {
+                        Intent loginIntent = new Intent(SplashActivity.this, LoginActivity.class);
+                        startActivity(loginIntent);
+                        finish();
+                    } else {
+                        ParseUser currentUser = ParseUser.getCurrentUser();
+                        if (currentUser != null) {
+                            Intent menuIntent = new Intent(SplashActivity.this, MainActivity.class);
+                            startActivity(menuIntent);
+                            finish();
+                        } else {
+                            Intent loginIntent = new Intent(SplashActivity.this, LoginActivity.class);
+                            startActivity(loginIntent);
+                            finish();
+                        }
+                    }
                 }
 
             }, Constants.SPLASH_INTERVAL);

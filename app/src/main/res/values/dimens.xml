@@ -22,5 +22,6 @@
     <!--Login margin-->
     <dimen name="login_margin">60dp</dimen>
     <dimen name="view_margin">10dp</dimen>
+    <dimen name="join_button">90dp</dimen>
 
 </resources>

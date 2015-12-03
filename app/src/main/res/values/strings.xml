@@ -16,17 +16,30 @@
     <string name="exit">Exit</string>
     <!-- Retry After Checking Connection -->
     <string name="retry">Retry</string>
-    <!--Facebook Button Message-->
+    <!-- Facebook Button Message -->
     <string name="join_fb">Sign in with Facebook</string>
-    <!--Register-->
+    <!-- Register -->
+    <string name="name">Name</string>
     <string name="login">Log in</string>
     <string name="register">Register here</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <!--Register Message-->
+    <string name="join">Join</string>
+    <!-- Register Message -->
     <string name="register_message">Start your experience</string>
     <string name="without_register">Enter without register</string>
     <string name="sign_up">Still not a member? <b>SIGN UP HERE!</b></string>
-
-
+    <string name="registration_title">Registration</string>
+    <string name="registration_warning">Fill up all the fields</string>
+    <!-- Wrong user information warning -->
+    <string name="user_warning">Wrong email or password</string>
+    <!--Main Activity-->
+    <string name="main_title">Main Menu</string>
+    <!--Login Message-->
+    <string name="successfully_login">Successfully Logged in</string>
+    <string name="not_register_user">Not register user. Please sing up or enter
+        without registration.</string>
+    <!--Sing up Message-->
+    <string name="successful_sign_up">Successfully sign up, Please log in.</string>
+    <string name="sign_up_error">There was an error, sorry.</string>
 </resources>

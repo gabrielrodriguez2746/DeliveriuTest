@@ -3,6 +3,8 @@
 
     <!-- Message the user gets when the application is launched -->
     <string name="welcome_msg">Bienvenivenido al mejor servicio de entregas</string>
+    <!-- Confirmation Title -->
+    <string name="confirmation_title">Confirmación</string>
     <!--Warning Internet Connection-->
     <string name="warning_net">Problemas de Red</string>
     <!--Checking Internet Connection-->
@@ -14,11 +16,26 @@
     <!--Facebook Button Message-->
     <string name="join_fb">Inicia sesión con Facebook</string>
     <!--Register-->
+    <string name="name">Nombre</string>
     <string name="login">Iniciar Sesión</string>
     <string name="register">Registrate</string>
     <string name="password">Contraseña</string>
+    <string name="join">Únete</string>
     <!--Register Message-->
     <string name="register_message">Comienza tu experiencia</string>
     <string name="without_register">Entre sin registrarse</string>
     <string name="sign_up">¿Todavía no eres miembro? <b>¡REGISTARTE!</b></string>
+    <string name="registration_title">Registro</string>
+    <string name="registration_warning">Rellene todos loscampos</string>
+    <!--Wrong user information warning-->
+    <string name="user_warning">Email o contraseña equivocada</string>
+    <!--Main Activity-->
+    <string name="main_title">Menu Principal</string>
+    <!--Login Message-->
+    <string name="successfully_login">Ingreso exitoso</string>
+    <string name="not_register_user">Usuario no registrado. Por favor registrate o ingresa
+        sin registarte </string>
+    <!--Sing up Message-->
+    <string name="successful_sign_up">Registro exitoso, por favor ingresa.</string>
+    <string name="sign_up_error">Hubo un error, lo sentimos.</string>
 </resources>
