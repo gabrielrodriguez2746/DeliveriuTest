@@ -1,6 +1,7 @@
 package grodriguez.com.deliveriutest.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Name of category and products associated with it
@@ -11,6 +12,7 @@ public class Categories implements Serializable {
 
     private String id;
     private String name;
+    private List<Products> products;
 
     public Categories(String id, String name) {
         this.id = id;
@@ -33,11 +35,20 @@ public class Categories implements Serializable {
         this.name = name;
     }
 
+    public List<Products> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Products> products) {
+        this.products = products;
+    }
+
     @Override
     public String toString() {
         return "Categories{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", products=" + products +
                 '}';
     }
 }

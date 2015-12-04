@@ -1,5 +1,7 @@
 package grodriguez.com.deliveriutest.models;
 
+import com.parse.ParseFile;
+
 import java.io.Serializable;
 
 /**
@@ -12,10 +14,10 @@ public class Products implements Serializable {
     private String id;
     private String name;
     private String description;
-    private String image;
-    private String price;
+    private ParseFile image;
+    private int price;
 
-    public Products(String id, String name, String description, String image, String price) {
+    public Products(String id, String name, String description, ParseFile image, int price) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -39,11 +41,11 @@ public class Products implements Serializable {
         this.description = description;
     }
 
-    public String getImage() {
+    public ParseFile getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(ParseFile image) {
         this.image = image;
     }
 
@@ -55,11 +57,11 @@ public class Products implements Serializable {
         this.id = id;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
