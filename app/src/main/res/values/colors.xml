@@ -3,6 +3,8 @@
 
     <color name="text_color">#6D6E71</color>
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="light_blue">#00a0e9</color>
     <!--Transparent Colors-->
     <color name="transparent_white">#e1ffffff</color>
     <color name="transparent_black">#be232323</color>
@@ -12,4 +14,5 @@
     <!-- Application button colors -->
     <color name="red_button_start">#ff6b35</color>
     <color name="red_button_end">#f42434</color>
+    <color name="subtitle_red">#f42534</color>
 </resources>

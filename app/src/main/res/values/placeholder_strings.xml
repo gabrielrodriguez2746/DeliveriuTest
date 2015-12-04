@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="placeholder_category_name">Japanese</string>
+    <string name="placeholder_product_name">Apple Soda</string>
+    <string name="placeholder_product_price">Price: 19 $</string>
+    <string name="placeholder_product_description">Apple Soda from Colombia</string>
+</resources>

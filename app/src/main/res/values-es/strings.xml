@@ -34,8 +34,9 @@
     <!--Category Message-->
     <string name="category_message">Selecciona una de nuestras categorias</string>
     <!--Product Message-->
+    <string name="product_title">Productos</string>
     <string name="product_message">Selecciona uno de nuestros productos</string>
-    <string name="product_resume_message">Puede ver la descripción o añadirlo a su orden (Para esto
+    <string name="product_resume_message">Puede añadir este producto a su orden de envío (Para esto
         necesita estar logeado)</string>
     <!--Login Message-->
     <string name="successfully_login">Ingreso exitoso</string>
@@ -44,4 +45,11 @@
     <!--Sing up Message-->
     <string name="successful_sign_up">Registro exitoso, por favor ingresa.</string>
     <string name="sign_up_error">Hubo un error, lo sentimos.</string>
+    <!--Loading-->
+    <string name="loading">Loading</string>
+    <!--Order Message-->
+    <string name="order">Añadir a la orden</string>
+    <string name="price">Precio %1$s \$$</string>
+    <!--Log out message-->
+    <string name="exit_message">¿Está seguro que desea salir? \n Usted será deslogueado</string>
 </resources>
