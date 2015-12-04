@@ -12,6 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import grodriguez.com.deliveriutest.R;
+import grodriguez.com.deliveriutest.adapters.ProductAdapter;
+import grodriguez.com.deliveriutest.listeners.OnFragmentInteractionListener;
 import grodriguez.com.deliveriutest.models.Products;
 import grodriguez.com.deliveriutest.utils.Constants;
 
@@ -48,10 +50,12 @@ public class ProductFragment extends Fragment {
         View header = getActivity().getLayoutInflater().inflate(R.layout.list_view_header, null);
         ((TextView) header.findViewById(R.id.header_message)).setText(getActivity().
                 getString(R.string.product_message));
-        listView.addHeaderView(header);
         TextView product_resume_message = (TextView) header.findViewById(R.id.header_resume_message);
         product_resume_message.setText(getActivity().getString(R.string.product_resume_message));
         product_resume_message.setVisibility(View.VISIBLE);
+        listView.addHeaderView(header);
+        listView.setAdapter(new ProductAdapter(productsList, (OnFragmentInteractionListener) getActivity(),
+                getContext()));
         Log.d(LOG_TAG, "Creating the Fragment");
         if (productsList != null)
             Log.d(LOG_TAG, "Product List " + productsList.toString());

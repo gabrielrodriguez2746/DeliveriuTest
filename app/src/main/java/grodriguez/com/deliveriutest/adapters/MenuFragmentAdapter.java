@@ -23,11 +23,7 @@ public class MenuFragmentAdapter extends FragmentStatePagerAdapter {
     private final String LOG_TAG = getClass().getSimpleName();
     private ArrayList<Categories> categoriesList;
     private ArrayList<Products> productsList;
-    private int searchQuery;
 
-    public void setSearchQuery(int searchQuery) {
-        this.searchQuery = searchQuery;
-    }
 
     public void setCategoriesList(ArrayList<Categories> categoriesList) {
         this.categoriesList = categoriesList;

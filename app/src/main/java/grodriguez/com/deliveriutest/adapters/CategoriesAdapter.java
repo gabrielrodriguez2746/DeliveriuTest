@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import grodriguez.com.deliveriutest.R;
 import grodriguez.com.deliveriutest.listeners.OnFragmentInteractionListener;
 import grodriguez.com.deliveriutest.models.Categories;
+import grodriguez.com.deliveriutest.utils.Constants;
 
 /**
  * @author Gabriel Rodriguez
@@ -58,7 +59,7 @@ public class CategoriesAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup viewGroup) {
+    public View getView(final int position, View view, ViewGroup viewGroup) {
 
         if (categoriesList == null)
             return view;
@@ -80,7 +81,8 @@ public class CategoriesAdapter extends BaseAdapter {
         viewHolder.itemList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onFragmentInteractionListener.onItemSelected(view, category.getId());
+                onFragmentInteractionListener.onItemSelected(view, position,
+                        Constants.CATEGORIES_ID);
             }
         });
         return view;
@@ -91,4 +93,5 @@ public class CategoriesAdapter extends BaseAdapter {
         TextView categoryName;
         View itemList;
     }
+
 }
