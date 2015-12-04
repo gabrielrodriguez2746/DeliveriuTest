@@ -21,6 +21,7 @@ public class Constants {
     /**
      * API TAGS
      */
+    public static final String TAG_ID = "objectId";
     public static final String TAG_NAME = "name";
     public static final String TAG_IMAGE = "image";
     public static final String TAG_PRICE = "price";

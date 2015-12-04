@@ -88,6 +88,9 @@ public class RegisterActivity extends FragmentActivity implements View.OnClickLi
             finish();
     }
 
+    /**
+     * User register in Parse
+     */
     private void connectWithParse() {
         Log.d(LOG_TAG,"Parse registration");
         ParseUser user = new ParseUser();

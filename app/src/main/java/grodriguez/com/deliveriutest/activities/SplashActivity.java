@@ -30,11 +30,16 @@ public class SplashActivity extends FragmentActivity implements OnConfirmationDi
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
-        Parse.enableLocalDatastore(this);
-        Parse.initialize(this, getString(R.string.parse_application_id),
-                getString(R.string.parse_client_key));
-        ParseUser.enableAutomaticUser();
-        ParseACL defaultACL = new ParseACL();
+        try {
+            Parse.enableLocalDatastore(this);
+            Parse.initialize(this, getString(R.string.parse_application_id),
+                    getString(R.string.parse_client_key));
+            ParseUser.enableAutomaticUser();
+            ParseACL defaultACL = new ParseACL();
+        } catch (Exception e) {
+            Log.d(LOG_TAG, e.getMessage());
+        }
+
 
         if (ConnectionManager.isConnected(this)) {
             /**

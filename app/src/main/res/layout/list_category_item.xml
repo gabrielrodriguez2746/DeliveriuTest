@@ -5,7 +5,9 @@
     android:layout_height="wrap_content"
     android:minHeight="?android:listPreferredItemHeight"
     android:orientation="horizontal"
-    android:padding="@dimen/activity_vertical_margin">
+    android:paddingLeft="@dimen/view_margin"
+    android:paddingRight="@dimen/view_margin">
+
 
     <ImageView
         android:id="@+id/category_image"
@@ -22,6 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
+        android:text="@string/placeholder_category_name"
         android:textSize="@dimen/list_item_text_size" />
+
 
 </LinearLayout>

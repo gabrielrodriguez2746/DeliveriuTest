@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <grodriguez.com.deliveriutest.widget.CustomTextView
         android:id="@+id/header_message"
+        style="@style/TitleCapsFont"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/view_margin"
+        android:gravity="center_horizontal"
         android:paddingLeft="@dimen/message_margin"
         android:paddingRight="@dimen/message_margin"
-        style="@style/TitleCapsFont"
         android:text="@string/category_message"
-        android:gravity="center_horizontal"/>
+        android:textColor="@color/black"
+        android:textSize="@dimen/header_text_size" />
+
     <grodriguez.com.deliveriutest.widget.CustomTextView
         android:id="@+id/header_resume_message"
+        style="@style/TitleBookFont"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/view_margin"
+        android:gravity="center_horizontal"
         android:paddingLeft="@dimen/message_margin"
         android:paddingRight="@dimen/message_margin"
-        style="@style/TitleBookFont"
-        android:gravity="center_horizontal"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
 </LinearLayout>
