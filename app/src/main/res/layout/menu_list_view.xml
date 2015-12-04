@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/menu_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/view_margin"
+        android:layout_marginLeft="@dimen/listview_margin"
+        android:layout_marginRight="@dimen/listview_margin"
+        android:layout_marginTop="@dimen/view_margin"
+        android:dividerHeight="2dp"
+        android:scrollbars="none" />
+
+</LinearLayout>

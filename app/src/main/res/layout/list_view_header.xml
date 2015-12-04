@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <grodriguez.com.deliveriutest.widget.CustomTextView
+        android:id="@+id/header_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/message_margin"
+        android:paddingRight="@dimen/message_margin"
+        style="@style/TitleCapsFont"
+        android:text="@string/category_message"
+        android:gravity="center_horizontal"/>
+    <grodriguez.com.deliveriutest.widget.CustomTextView
+        android:id="@+id/header_resume_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/message_margin"
+        android:paddingRight="@dimen/message_margin"
+        style="@style/TitleBookFont"
+        android:gravity="center_horizontal"
+        android:visibility="gone"/>
+
+</LinearLayout>
