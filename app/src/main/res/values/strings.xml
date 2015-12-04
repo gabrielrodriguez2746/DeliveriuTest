@@ -35,6 +35,12 @@
     <string name="user_warning">Wrong email or password</string>
     <!--Main Activity-->
     <string name="main_title">Main Menu</string>
+    <!--Category Message-->
+    <string name="category_message">Select one of our Categories</string>
+    <!--Product Message-->
+    <string name="product_message">Select one of our Product</string>
+    <string name="product_resume_message">You can see its description or adding it to an order (You
+        need to be login)</string>
     <!--Login Message-->
     <string name="successfully_login">Successfully Logged in</string>
     <string name="not_register_user">Not register user. Please sing up or enter

@@ -23,5 +23,11 @@
     <dimen name="login_margin">60dp</dimen>
     <dimen name="view_margin">10dp</dimen>
     <dimen name="join_button">90dp</dimen>
+    <!--Messages Margin-->
+    <dimen name="message_margin">30dp</dimen>
+    <!--ListView Margin-->
+    <dimen name="listview_margin">8dp</dimen>
+    <!--List Item text size-->
+    <dimen name="list_item_text_size">20sp</dimen>
 
 </resources>

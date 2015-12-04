@@ -2,7 +2,7 @@ package grodriguez.com.deliveriutest.listeners;
 
 /**
  *
- * @author Richard Ricciardelli (rricciardelli@wuelto.com.mx)
+ * @author Gabriel Rodriguez
  * @version 1.0
  */
 public interface OnConfirmationDialogClickListener {

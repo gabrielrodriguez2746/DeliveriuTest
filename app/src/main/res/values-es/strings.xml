@@ -31,6 +31,12 @@
     <string name="user_warning">Email o contraseña equivocada</string>
     <!--Main Activity-->
     <string name="main_title">Menu Principal</string>
+    <!--Category Message-->
+    <string name="category_message">Selecciona una de nuestras categorias</string>
+    <!--Product Message-->
+    <string name="product_message">Selecciona uno de nuestros productos</string>
+    <string name="product_resume_message">Puede ver la descripción o añadirlo a su orden (Para esto
+        necesita estar logeado)</string>
     <!--Login Message-->
     <string name="successfully_login">Ingreso exitoso</string>
     <string name="not_register_user">Usuario no registrado. Por favor registrate o ingresa
