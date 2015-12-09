@@ -8,8 +8,6 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.parse.Parse;
-import com.parse.ParseACL;
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseUser;
 
@@ -17,6 +15,7 @@ import grodriguez.com.deliveriutest.R;
 import grodriguez.com.deliveriutest.dialog.ConfirmationDialog;
 import grodriguez.com.deliveriutest.helpers.ConnectionManager;
 import grodriguez.com.deliveriutest.listeners.OnConfirmationDialogClickListener;
+import grodriguez.com.deliveriutest.network.ParseApplication;
 import grodriguez.com.deliveriutest.utils.Constants;
 
 public class SplashActivity extends FragmentActivity implements OnConfirmationDialogClickListener {
@@ -31,15 +30,10 @@ public class SplashActivity extends FragmentActivity implements OnConfirmationDi
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
         try {
-            Parse.enableLocalDatastore(this);
-            Parse.initialize(this, getString(R.string.parse_application_id),
-                    getString(R.string.parse_client_key));
-            ParseUser.enableAutomaticUser();
-            ParseACL defaultACL = new ParseACL();
+            ParseApplication.startParse(this);
         } catch (Exception e) {
-            Log.d(LOG_TAG, e.getMessage());
+            Log.d(LOG_TAG, "Error starting Parse Application " + e.getMessage());
         }
-
 
         if (ConnectionManager.isConnected(this)) {
             /**
