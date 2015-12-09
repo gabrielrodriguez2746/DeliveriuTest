@@ -21,7 +21,7 @@ public class Constants {
     /**
      * API TAGS
      */
-    public static final String TAG_ID = "objectId";
+
     public static final String TAG_NAME = "name";
     public static final String TAG_IMAGE = "image";
     public static final String TAG_PRICE = "price";
@@ -29,6 +29,13 @@ public class Constants {
     public static final String TAG_CATEGORY_TABLE = "Category";
     public static final String TAG_PRODUCTS_TABLE = "Product";
     public static final String TAG_PRODUCTS_CATEGORIES = "category";
+
+    /**
+     * Facebook Permission Params
+     */
+    public static final String TAG_FIELDS = "fields";
+    public static final String TAG_ID = "id";
+
 
     /**
      * Query Constants
