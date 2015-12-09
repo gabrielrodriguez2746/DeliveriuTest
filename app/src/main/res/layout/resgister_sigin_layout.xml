@@ -24,13 +24,13 @@
         android:textSize="15sp" />
 
     <grodriguez.com.deliveriutest.widget.CustomEditText
-        android:id="@+id/email"
+        android:id="@+id/name"
         style="@style/TitleBookFont"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@color/transparent_white"
-        android:hint="@string/email"
+        android:hint="@string/name"
         android:inputType="textEmailAddress"
         android:padding="@dimen/view_margin" />
 

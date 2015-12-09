@@ -7,8 +7,8 @@ package grodriguez.com.deliveriutest.listeners;
 public interface OnParseSignUpResult {
 
     /**
-     *Allows the user to connect the Parse Application SignUp with a parent activity
-     * @param e
+     * Callback for user Sign Up
+     * @param e Exception if the SignUp is not success
      */
     void onSingUpResultDone(Exception e);
 

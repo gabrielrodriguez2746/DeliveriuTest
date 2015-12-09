@@ -1,5 +1,6 @@
 package grodriguez.com.deliveriutest.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -16,7 +17,6 @@ import grodriguez.com.deliveriutest.dialog.ConfirmationDialog;
 import grodriguez.com.deliveriutest.listeners.OnConfirmationDialogClickListener;
 import grodriguez.com.deliveriutest.listeners.OnParseSignUpResult;
 import grodriguez.com.deliveriutest.network.ParseApplication;
-import grodriguez.com.deliveriutest.utils.Constants;
 import grodriguez.com.deliveriutest.utils.FieldValidator;
 
 public class RegisterActivity extends FragmentActivity implements View.OnClickListener,
@@ -26,15 +26,14 @@ public class RegisterActivity extends FragmentActivity implements View.OnClickLi
     private final String LOG_TAG = getClass().getSimpleName();
     private ImageView mBack; // Back Button on the action bar
     private EditText mName, mEmail, mPassword; // User Information
-    private Bundle userInfo; // User Information from Login Activity
     private boolean success; // Sign up success
     private Button mJoinButton; // Join Button
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        userInfo = getIntent().getExtras();
         mBack = (ImageView) findViewById(R.id.backbtn);
         mBack.setVisibility(View.VISIBLE);
         mBack.setClickable(true);
@@ -51,11 +50,10 @@ public class RegisterActivity extends FragmentActivity implements View.OnClickLi
 
         success = false;
 
-        if (userInfo != null) {
-            mName.setText(userInfo.getString(Constants.BUNDLE_NAME));
-            mEmail.setText(userInfo.getString(Constants.BUNDLE_EMAIL));
-        }
-
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(this.getString(R.string.loading));
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setCancelable(false);
     }
 
     @Override
@@ -94,6 +92,7 @@ public class RegisterActivity extends FragmentActivity implements View.OnClickLi
      */
     private void connectWithParse() {
         Log.d(LOG_TAG, "Parse registration");
+        progressDialog.show();
         String name = mName.getText().toString();
         String email = mEmail.getText().toString();
         String password = mPassword.getText().toString();
@@ -103,6 +102,7 @@ public class RegisterActivity extends FragmentActivity implements View.OnClickLi
 
     /**
      * Show a dialog to the user to confirm the information
+     *
      * @param message Message to show on the Dialog
      */
     private void showConfirmationDialog(String message) {
@@ -125,6 +125,7 @@ public class RegisterActivity extends FragmentActivity implements View.OnClickLi
 
     @Override
     public void onSingUpResultDone(Exception e) {
+        progressDialog.dismiss();
         if (e == null) {
             Log.d(LOG_TAG, "Registration OK");
             success = true;
@@ -132,7 +133,6 @@ public class RegisterActivity extends FragmentActivity implements View.OnClickLi
         } else {
             Log.d(LOG_TAG, "There was an error");
             Log.d(LOG_TAG, e.toString());
-            Log.d(LOG_TAG, e.getMessage());
             success = false;
             showConfirmationDialog(getString(R.string.sign_up_error));
         }

@@ -3,6 +3,7 @@ package grodriguez.com.deliveriutest.network;
 import android.app.Application;
 import android.content.Context;
 
+import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseException;
@@ -10,6 +11,7 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 import grodriguez.com.deliveriutest.R;
+import grodriguez.com.deliveriutest.listeners.OnParseSignInResult;
 import grodriguez.com.deliveriutest.listeners.OnParseSignUpResult;
 
 /**
@@ -19,8 +21,6 @@ import grodriguez.com.deliveriutest.listeners.OnParseSignUpResult;
  * @version 1.0
  */
 public class ParseApplication extends Application {
-
-    private final String LOG_TAG = getClass().getSimpleName();
 
     /**
      * Allows the user to initialize the Parse SDK
@@ -40,13 +40,14 @@ public class ParseApplication extends Application {
     }
 
     /**
+     * Connect with Parse to Sign Up a User
      *
-     * @param context
-     * @param name
-     * @param email
-     * @param password
+     * @param context  Context of the Activity is Calling the SignUp
+     * @param name     User Name
+     * @param email    User Email
+     * @param password User Password
      */
-    public static void connectWithParse(Context context,String name, String  email, String  password) {
+    public static void connectWithParse(Context context, String name, String email, String password) {
 
         final OnParseSignUpResult onParseSignUpResult = (OnParseSignUpResult) context;
         ParseUser user = new ParseUser();
@@ -59,7 +60,23 @@ public class ParseApplication extends Application {
                 onParseSignUpResult.onSingUpResultDone(e);
             }
         });
+    }
 
+    /**
+     * Connect with Parse to Sign Up a User
+     *
+     * @param context  Context of the Activity is Calling the SignIn
+     * @param name     User Name
+     * @param password User Password
+     */
+    public static void singInWithParse(Context context, String name, String password) {
+        final OnParseSignInResult onParseSignInResult = (OnParseSignInResult) context;
+        ParseUser.logInInBackground(name, password, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                onParseSignInResult.onSingInResultDone(user, e);
+            }
+        });
     }
 
 }

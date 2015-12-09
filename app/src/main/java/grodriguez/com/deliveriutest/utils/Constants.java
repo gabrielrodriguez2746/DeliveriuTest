@@ -16,12 +16,11 @@ public class Constants {
     public static final String BUNDLE_NAME = "name";
     public static final String BUNDLE_EMAIL = "email";
     public static final String BUNDLE_CATEGORIES_LIST = "categories_list";
-    public static final String BUNDLE_PRODUCTS_LIST= "products_list";
+    public static final String BUNDLE_PRODUCTS_LIST = "products_list";
 
     /**
      * API TAGS
      */
-
     public static final String TAG_NAME = "name";
     public static final String TAG_IMAGE = "image";
     public static final String TAG_PRICE = "price";
@@ -36,12 +35,17 @@ public class Constants {
     public static final String TAG_FIELDS = "fields";
     public static final String TAG_ID = "id";
 
-
     /**
      * Query Constants
      */
     public static final int CATEGORIES_ID = 0x01;
     public static final int PRODUCTS_ID = 0x02;
+
+    /**
+     * Login Type
+     */
+    public static final String TAG_FACEBOOK_LOGIN = "facebook_login";
+    public static final String TAG_REGULAR_LOGIN = "regular_login";
 
 
 }
