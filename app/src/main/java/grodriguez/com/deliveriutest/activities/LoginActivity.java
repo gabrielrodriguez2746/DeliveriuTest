@@ -1,5 +1,6 @@
 package grodriguez.com.deliveriutest.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -30,11 +31,13 @@ import java.util.List;
 import grodriguez.com.deliveriutest.R;
 import grodriguez.com.deliveriutest.dialog.ConfirmationDialog;
 import grodriguez.com.deliveriutest.listeners.OnConfirmationDialogClickListener;
+import grodriguez.com.deliveriutest.listeners.OnParseSignUpResult;
+import grodriguez.com.deliveriutest.network.ParseApplication;
 import grodriguez.com.deliveriutest.utils.Constants;
 import grodriguez.com.deliveriutest.utils.FieldValidator;
 
 public class LoginActivity extends FragmentActivity implements FacebookCallback<LoginResult>,
-        View.OnClickListener, OnConfirmationDialogClickListener {
+        View.OnClickListener, OnConfirmationDialogClickListener, OnParseSignUpResult {
 
     private final String LOG_TAG = getClass().getSimpleName();
     private Button mFbButton, mLoginButton; // Facebook Custom Button and Login Button
@@ -48,7 +51,7 @@ public class LoginActivity extends FragmentActivity implements FacebookCallback<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        permissionNeeds = Arrays.asList("email");
+        permissionNeeds = Arrays.asList(Constants.BUNDLE_EMAIL);
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         mFbButton = (Button) findViewById(R.id.fb_login);
@@ -83,6 +86,9 @@ public class LoginActivity extends FragmentActivity implements FacebookCallback<
 
         Log.d(LOG_TAG, loginResult.getAccessToken().getToken().toString());
         Log.d(LOG_TAG, loginResult.getAccessToken().getUserId().toString());
+        final String userId = loginResult.getAccessToken().getUserId().toString();
+        final Context context = this;
+
         GraphRequest request = GraphRequest.newMeRequest(
                 loginResult.getAccessToken(),
                 new GraphRequest.GraphJSONObjectCallback() {
@@ -99,15 +105,17 @@ public class LoginActivity extends FragmentActivity implements FacebookCallback<
                         } catch (Exception e) {
                             Log.d(LOG_TAG, "Facebook Exception :: " + e.toString());
                         }
-                        bundle.putString(Constants.BUNDLE_EMAIL, email);
-                        bundle.putString(Constants.BUNDLE_NAME, name);
-                        BeginActivity(RegisterActivity.class, bundle, false);
-                        LoginManager.getInstance().logOut();
+                        ParseApplication.connectWithParse(context, name, email, userId);
+//                        bundle.putString(Constants.BUNDLE_EMAIL, email);
+//                        bundle.putString(Constants.BUNDLE_NAME, name);
+//                        BeginActivity(RegisterActivity.class, bundle, false);
+                        LoginManager.getInstance().logOut(); // I really should do it later
                         Log.d(LOG_TAG, response.toString());
                     }
                 });
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "id, email, name");
+        parameters.putString(Constants.TAG_FIELDS, Constants.TAG_ID + ", " + Constants.BUNDLE_EMAIL +
+                ", " + Constants.TAG_NAME);
         request.setParameters(parameters);
         request.executeAsync();
 
@@ -115,7 +123,7 @@ public class LoginActivity extends FragmentActivity implements FacebookCallback<
 
     @Override
     public void onCancel() {
-        Log.d(LOG_TAG, "cancel");
+        Log.d(LOG_TAG, "cancel Facebook Activity");
     }
 
     @Override
@@ -205,6 +213,11 @@ public class LoginActivity extends FragmentActivity implements FacebookCallback<
 
     @Override
     public void onRelease() {
+
+    }
+
+    @Override
+    public void onSingUpResultDone(Exception e) {
 
     }
 }

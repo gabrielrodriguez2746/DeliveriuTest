@@ -26,7 +26,7 @@
     <string name="without_register">Entre sin registrarse</string>
     <string name="sign_up">¿Todavía no eres miembro? <b>¡REGISTARTE!</b></string>
     <string name="registration_title">Registro</string>
-    <string name="registration_warning">Rellene todos loscampos</string>
+    <string name="registration_warning">Rellene todos los campos</string>
     <!--Wrong user information warning-->
     <string name="user_warning">Email o contraseña equivocada</string>
     <!--Main Activity-->

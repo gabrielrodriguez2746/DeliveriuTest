@@ -11,20 +11,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parse.ParseException;
-import com.parse.ParseUser;
-import com.parse.SignUpCallback;
-
 import grodriguez.com.deliveriutest.R;
 import grodriguez.com.deliveriutest.dialog.ConfirmationDialog;
 import grodriguez.com.deliveriutest.listeners.OnConfirmationDialogClickListener;
+import grodriguez.com.deliveriutest.listeners.OnParseSignUpResult;
+import grodriguez.com.deliveriutest.network.ParseApplication;
 import grodriguez.com.deliveriutest.utils.Constants;
 import grodriguez.com.deliveriutest.utils.FieldValidator;
 
 public class RegisterActivity extends FragmentActivity implements View.OnClickListener,
-        SignUpCallback, OnConfirmationDialogClickListener {
+        OnConfirmationDialogClickListener, OnParseSignUpResult {
 
-    private final String LOG_TAG =  getClass().getSimpleName();
+
+    private final String LOG_TAG = getClass().getSimpleName();
     private ImageView mBack; // Back Button on the action bar
     private EditText mName, mEmail, mPassword; // User Information
     private Bundle userInfo; // User Information from Login Activity
@@ -49,6 +48,8 @@ public class RegisterActivity extends FragmentActivity implements View.OnClickLi
         mPassword = (EditText) findViewById(R.id.password);
         mJoinButton = (Button) findViewById(R.id.join);
         mJoinButton.setOnClickListener(this);
+
+        success = false;
 
         if (userInfo != null) {
             mName.setText(userInfo.getString(Constants.BUNDLE_NAME));
@@ -92,31 +93,17 @@ public class RegisterActivity extends FragmentActivity implements View.OnClickLi
      * User register in Parse
      */
     private void connectWithParse() {
-        Log.d(LOG_TAG,"Parse registration");
-        ParseUser user = new ParseUser();
-        user.setUsername(mName.getText().toString());
-        user.setEmail(mEmail.getText().toString());
-        user.setPassword(mPassword.getText().toString());
-        user.signUpInBackground(this);
-
+        Log.d(LOG_TAG, "Parse registration");
+        String name = mName.getText().toString();
+        String email = mEmail.getText().toString();
+        String password = mPassword.getText().toString();
+        ParseApplication.connectWithParse(this, name, email, password);
     }
 
-    @Override
-    public void done(ParseException e) {
-        if (e == null) {
-            Log.d(LOG_TAG, "Registration OK");
-            success = true;
-            showConfirmationDialog(getString(R.string.successful_sign_up));
-        } else {
-            Log.d(LOG_TAG, "There was an error");
-            Log.d(LOG_TAG, e.toString());
-            success = false;
-            showConfirmationDialog(getString(R.string.sign_up_error));
-        }
-    }
 
     /**
-     * Show Dialog to Create User Notifications
+     * Show a dialog to the user to confirm the information
+     * @param message Message to show on the Dialog
      */
     private void showConfirmationDialog(String message) {
 
@@ -125,12 +112,9 @@ public class RegisterActivity extends FragmentActivity implements View.OnClickLi
 
     @Override
     public void onConfirm() {
-        if (success){
-            Bundle bundle = new Bundle();
-            bundle.putString(Constants.BUNDLE_EMAIL, mEmail.getText().toString());
-            BeginActivity(LoginActivity.class, bundle, true);
-        }
-        else
+        if (success) {
+            BeginActivity(MainActivity.class, null, true);
+        } else
             finish();
     }
 
@@ -139,4 +123,18 @@ public class RegisterActivity extends FragmentActivity implements View.OnClickLi
 
     }
 
+    @Override
+    public void onSingUpResultDone(Exception e) {
+        if (e == null) {
+            Log.d(LOG_TAG, "Registration OK");
+            success = true;
+            showConfirmationDialog(getString(R.string.successful_sign_up));
+        } else {
+            Log.d(LOG_TAG, "There was an error");
+            Log.d(LOG_TAG, e.toString());
+            Log.d(LOG_TAG, e.getMessage());
+            success = false;
+            showConfirmationDialog(getString(R.string.sign_up_error));
+        }
+    }
 }
