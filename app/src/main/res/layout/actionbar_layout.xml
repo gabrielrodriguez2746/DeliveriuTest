@@ -17,6 +17,19 @@
         android:tint="@color/white"
         android:visibility="invisible" />
 
+    <ImageButton
+        android:id="@+id/drawer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/button_pressed_selector"
+        android:padding="@dimen/view_margin"
+        android:src="@drawable/ic_drawer"
+        android:tint="@color/white"
+        android:visibility="invisible" />
+
+
     <grodriguez.com.deliveriutest.widget.CustomTextView
         android:id="@+id/action_bar_title"
         style="@style/TitleDemiFont"
