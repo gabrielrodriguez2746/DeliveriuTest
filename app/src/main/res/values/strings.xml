@@ -54,6 +54,9 @@
     <!--Order Message-->
     <string name="order">Add to order</string>
     <string name="price">Price: %1$s \$$</string>
+    <string name="order_confirmation">Are you sure do you want to add this product to your order?</string>
+    <string name="order_added_confirmation">Product added successfully to your order menu</string>
+    <string name="order_already_added_confirmation">Product already added tp your order</string>
     <!--Log out message-->
     <string name="exit_message">Are you sure you want to exit? \n You will be log out</string>
 </resources>

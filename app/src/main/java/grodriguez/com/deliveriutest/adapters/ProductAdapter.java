@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.parse.ParseUser;
@@ -75,8 +76,7 @@ public class ProductAdapter extends BaseAdapter {
             viewHolder.productPrice = (TextView) view.findViewById(R.id.product_price);
             viewHolder.productDescription = (TextView) view.findViewById(R.id.product_description);
             viewHolder.productImage = (ImageView) view.findViewById(R.id.product_image);
-            viewHolder.itemList = view.findViewById(R.id.item_list_product);
-            viewHolder.shipButton = view.findViewById(R.id.ship_button);
+            viewHolder.shipButton = (LinearLayout) view.findViewById(R.id.ship_button);
             viewHolder.shipMessage = (TextView) view.findViewById(R.id.product_order);
             view.setTag(viewHolder);
         } else {
@@ -92,19 +92,11 @@ public class ProductAdapter extends BaseAdapter {
         Picasso.with(context).load(products.getImage()).into(viewHolder.productImage);
         viewHolder.productDescription.setText(products.getDescription());
         viewHolder.productPrice.setText(context.getString(R.string.price, price));
-        viewHolder.itemList.setClickable(true);
-        viewHolder.itemList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onFragmentInteractionListener.onItemSelected(view, position,
-                        Constants.PRODUCTS_ID);
-            }
-        });
         viewHolder.shipButton.setClickable(true);
         viewHolder.shipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onFragmentInteractionListener.onShippingSelected(products);
+                onFragmentInteractionListener.onShippingSelected(products, Constants.PRODUCTS_ID);
             }
         });
         viewHolder.shipMessage.setSelected(true);
@@ -117,8 +109,7 @@ public class ProductAdapter extends BaseAdapter {
         TextView productDescription;
         TextView productPrice;
         TextView shipMessage;
-        View shipButton;
-        View itemList;
+        LinearLayout shipButton;
     }
 
 }

@@ -30,5 +30,7 @@
     <!--List Item Image Size-->
     <dimen name="image_size_height">60dp</dimen>
     <dimen name="image_size_width">30dp</dimen>
+    <!-- Drawer dimens -->
+    <dimen name="drawer_width">240dp</dimen>
 
 </resources>

@@ -50,6 +50,9 @@
     <!--Order Message-->
     <string name="order">Añadir a la orden</string>
     <string name="price">Precio %1$s \$$</string>
+    <string name="order_confirmation">¿Está seguro que desea sumar este producto a su orden?</string>
+    <string name="order_added_confirmation">Producto añadido exitosamente a su orden</string>
+    <string name="order_already_added_confirmation">Producto añadido anteriormente a tu orden</string>
     <!--Log out message-->
     <string name="exit_message">¿Está seguro que desea salir? \n Usted será deslogueado</string>
 </resources>

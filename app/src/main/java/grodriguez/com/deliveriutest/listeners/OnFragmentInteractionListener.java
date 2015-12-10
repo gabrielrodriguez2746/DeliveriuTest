@@ -22,7 +22,8 @@ public interface OnFragmentInteractionListener {
     /**
      * Allows the user to add a product to the Ship
      *
-     * @param products
+     * @param products Item product who was selected
+     * @param tag Id of the page who is calling the confirmation dialog.
      */
-    void onShippingSelected(Products products);
+    void onShippingSelected(Products products, int tag);
 }
