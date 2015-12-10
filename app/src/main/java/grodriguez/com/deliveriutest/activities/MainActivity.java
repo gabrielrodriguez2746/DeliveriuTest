@@ -1,12 +1,14 @@
 package grodriguez.com.deliveriutest.activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -21,19 +23,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import grodriguez.com.deliveriutest.R;
+import grodriguez.com.deliveriutest.adapters.DrawerAdapter;
 import grodriguez.com.deliveriutest.adapters.MenuFragmentAdapter;
 import grodriguez.com.deliveriutest.dialog.ConfirmationDialog;
 import grodriguez.com.deliveriutest.listeners.OnConfirmationDialogClickListener;
 import grodriguez.com.deliveriutest.listeners.OnFindQueryParse;
 import grodriguez.com.deliveriutest.listeners.OnFragmentInteractionListener;
 import grodriguez.com.deliveriutest.models.Categories;
+import grodriguez.com.deliveriutest.models.DrawerItem;
 import grodriguez.com.deliveriutest.models.Products;
 import grodriguez.com.deliveriutest.network.ParseApplication;
 import grodriguez.com.deliveriutest.utils.Constants;
 
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener,
-        OnFragmentInteractionListener, OnConfirmationDialogClickListener, OnFindQueryParse {
+        OnFragmentInteractionListener, OnConfirmationDialogClickListener, OnFindQueryParse,
+        AdapterView.OnItemClickListener {
 
     private ImageView mBack; // Action Bar Back Button
     private TextView mTitle; // Action Bar Title
@@ -74,7 +79,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mFrameLayout = (FrameLayout) findViewById(R.id.drawer_container);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        // To Customize
+        ArrayList<DrawerItem> mDrawerItems = new ArrayList<>();
+        mDrawerItems.add(new DrawerItem(getString(R.string.generate_order)));
+        mDrawerList.setAdapter(new DrawerAdapter(mDrawerItems, this));
+        mDrawerList.setOnItemClickListener(this);
         /**
          * Progress Dialog
          */
@@ -101,7 +111,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case R.id.drawer:
                 openDrawer();
-            
         }
     }
 
@@ -109,7 +118,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public void onBackPressed() {
         if (actualPage == 1) {
             actualPage = 0;
-            mFrameLayout.setVisibility(View.VISIBLE);
+            mMenu.setVisibility(View.VISIBLE);
             mMenu.setVisibility(View.VISIBLE);
             pageIndicator = Constants.CATEGORIES_ID;
             mTitle.setText(getString(R.string.main_title));
@@ -132,15 +141,16 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         pageIndicator = tag;
         switch (tag) {
             case Constants.CATEGORIES_ID: {
-                mFrameLayout.setVisibility(View.GONE);
                 mBack.setVisibility(View.VISIBLE);
                 mMenu.setVisibility(View.GONE);
                 menuFragmentAdapter.setProductsList((ArrayList<Products>) categoriesList.get(id)
                         .getProducts());
                 menuFragmentAdapter.notifyDataSetChanged();
                 mTitle.setText(getString(R.string.product_title));
+                mFrameLayout.setVisibility(View.GONE);
                 actualPage = 1;
                 viewPager.setCurrentItem(actualPage);
+
                 break;
             }
             case Constants.PRODUCTS_ID: {
@@ -241,7 +251,31 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mDrawerLayout.openDrawer(mFrameLayout);
     }
 
-    private void closeDrawer() {
-        mDrawerLayout.closeDrawer(mFrameLayout);
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        switch (position) {
+            case 0:
+                mDrawerLayout.closeDrawers();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Constants.TAG_PRODUCTS_TABLE, selectedProductsList);
+                BeginActivity(OrderActivity.class, bundle, false);
+                break;
+        }
     }
+
+    /**
+     * Start a new activity
+     *
+     * @param activity Activity lo start
+     * @param bundle   Information to pass to next Activity
+     */
+    private void BeginActivity(Class activity, Bundle bundle, boolean finish) {
+        Intent intent = new Intent(MainActivity.this, activity);
+        if (bundle != null)
+            intent.putExtras(bundle);
+        startActivity(intent);
+        if (finish)
+            finish();
+    }
+
 }
