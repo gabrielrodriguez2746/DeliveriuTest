@@ -79,14 +79,21 @@ public class LoginActivity extends FragmentActivity implements FacebookCallback<
         mSignUp.setClickable(true);
         mSignUp.setOnClickListener(this);
 
+        /**
+         *Progress Dialog
+         */
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(this.getString(R.string.loading));
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setCancelable(false);
     }
 
 
     @Override
     public void onSuccess(LoginResult loginResult) {
 
-        Log.d(LOG_TAG, loginResult.getAccessToken().getToken().toString());
-        Log.d(LOG_TAG, loginResult.getAccessToken().getUserId().toString());
+        Log.d(LOG_TAG, "Token :: " + loginResult.getAccessToken().getToken().toString());
+        Log.d(LOG_TAG, "UserId :: " + loginResult.getAccessToken().getUserId().toString());
         password = loginResult.getAccessToken().getUserId().toString();
         final Context context = this;
 
@@ -105,6 +112,7 @@ public class LoginActivity extends FragmentActivity implements FacebookCallback<
                         }
                         loginType = Constants.TAG_FACEBOOK_LOGIN;
                         progressDialog.show();
+                        Log.d(LOG_TAG, "Login with Parse with Facebook Information");
                         ParseApplication.singInWithParse(context, name, password);
                         LoginManager.getInstance().logOut(); // I really should do it later
                         Log.d(LOG_TAG, response.toString());
@@ -219,7 +227,7 @@ public class LoginActivity extends FragmentActivity implements FacebookCallback<
                 ParseApplication.connectWithParse(this, name, email, password);
             else
                 progressDialog.dismiss();
-                showConfirmationDialog(getString(R.string.not_register_user));
+            showConfirmationDialog(getString(R.string.not_register_user));
         }
     }
 }

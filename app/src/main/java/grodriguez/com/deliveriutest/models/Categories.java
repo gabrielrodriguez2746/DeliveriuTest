@@ -10,11 +10,13 @@ import java.util.List;
  */
 public class Categories implements Serializable {
 
+    private int index;
     private String id;
     private String name;
     private List<Products> products;
 
-    public Categories(String id, String name) {
+    public Categories(int index, String id, String name) {
+        this.index = index;
         this.id = id;
         this.name = name;
     }
@@ -43,10 +45,19 @@ public class Categories implements Serializable {
         this.products = products;
     }
 
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
     @Override
     public String toString() {
         return "Categories{" +
-                "id='" + id + '\'' +
+                "index=" + index +
+                ", id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", products=" + products +
                 '}';
