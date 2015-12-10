@@ -27,9 +27,6 @@
     <dimen name="message_margin">30dp</dimen>
     <!--ListView Margin-->
     <dimen name="listview_margin">8dp</dimen>
-    <!--List Item text size-->
-    <dimen name="list_item_text_size">20sp</dimen>
-    <dimen name="header_text_size">22sp</dimen>
     <!--List Item Image Size-->
     <dimen name="image_size_height">60dp</dimen>
     <dimen name="image_size_width">30dp</dimen>

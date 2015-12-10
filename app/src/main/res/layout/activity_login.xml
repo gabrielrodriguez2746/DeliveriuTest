@@ -38,16 +38,18 @@
         android:background="@color/transparent_black"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:paddingLeft="@dimen/view_margin"
+        android:paddingRight="@dimen/view_margin">
 
         <grodriguez.com.deliveriutest.widget.CustomTextView
             android:id="@+id/without_register"
             style="@style/TextNormalFont"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/view_margin"
             android:gravity="center"
+            android:paddingBottom="@dimen/view_margin"
+            android:paddingTop="@dimen/view_margin"
             android:text="@string/without_register"
             android:textColor="@color/white"
             android:textSize="@dimen/login_screen_bottom_text_size" />
@@ -55,10 +57,11 @@
         <grodriguez.com.deliveriutest.widget.CustomTextView
             android:id="@+id/sign_up"
             style="@style/TextNormalFont"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
+            android:paddingBottom="@dimen/view_margin"
             android:text="@string/sign_up"
             android:textColor="@color/white"
             android:textSize="@dimen/login_screen_bottom_text_size" />
