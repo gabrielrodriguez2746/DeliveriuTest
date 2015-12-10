@@ -53,8 +53,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="marquee"
                 android:gravity="center_vertical"
-                android:text="@string/placeholder_product_price"
-                android:textSize="@dimen/confirmation_message_text_size" />
+                android:text="@string/placeholder_product_price" />
 
         </LinearLayout>
 

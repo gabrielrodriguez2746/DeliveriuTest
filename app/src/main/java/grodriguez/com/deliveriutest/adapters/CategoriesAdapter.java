@@ -1,6 +1,7 @@
 package grodriguez.com.deliveriutest.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,11 +60,12 @@ public class CategoriesAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, View view, ViewGroup viewGroup) {
+    public View getView(int position, View view, ViewGroup viewGroup) {
 
         if (categoriesList == null)
             return view;
         final Categories category = categoriesList.get(position);
+        Log.d(LOG_TAG, "Category :: " + category);
         ViewHolder viewHolder;
         if (view == null) {
             view = layoutInflater.inflate(R.layout.list_category_item, null);
@@ -81,7 +83,7 @@ public class CategoriesAdapter extends BaseAdapter {
         viewHolder.itemList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onFragmentInteractionListener.onItemSelected(view, position,
+                onFragmentInteractionListener.onItemSelected(view, category.getIndex(),
                         Constants.CATEGORIES_ID);
             }
         });

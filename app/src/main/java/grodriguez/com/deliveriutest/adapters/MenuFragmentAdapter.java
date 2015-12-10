@@ -3,6 +3,7 @@ package grodriguez.com.deliveriutest.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -42,9 +43,11 @@ public class MenuFragmentAdapter extends FragmentStatePagerAdapter {
         Fragment fragment = null;
         switch (position) {
             case 0:
+                Log.d(LOG_TAG, "Category List :: " + categoriesList);
                 fragment = CategoriesFragment.newInstance(categoriesList);
                 break;
             case 1:
+                Log.d(LOG_TAG, "Product List :: " + productsList);
                 fragment = ProductFragment.newInstance(productsList);
                 break;
         }

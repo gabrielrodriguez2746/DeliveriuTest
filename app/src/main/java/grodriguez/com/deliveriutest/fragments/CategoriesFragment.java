@@ -59,7 +59,7 @@ public class CategoriesFragment extends Fragment {
                 view.getContext()));
         Log.d(LOG_TAG, "Creating the Fragment");
         if (categoriesList != null)
-            Log.d(LOG_TAG, "Product List " + categoriesList.toString());
+            Log.d(LOG_TAG, "Category List :: " + categoriesList);
         return view;
     }
 }

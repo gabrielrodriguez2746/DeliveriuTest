@@ -14,8 +14,7 @@
         android:paddingLeft="@dimen/message_margin"
         android:paddingRight="@dimen/message_margin"
         android:text="@string/category_message"
-        android:textColor="@color/black"
-        android:textSize="@dimen/header_text_size" />
+        android:textColor="@color/black" />
 
     <grodriguez.com.deliveriutest.widget.CustomTextView
         android:id="@+id/header_resume_message"

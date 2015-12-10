@@ -1,9 +1,6 @@
 package grodriguez.com.deliveriutest.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.parse.GetDataCallback;
-import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseUser;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -94,7 +89,7 @@ public class ProductAdapter extends BaseAdapter {
         String price = Integer.toString(products.getPrice());
         viewHolder.productName.setText(products.getName());
         viewHolder.productName.setSelected(true);
-        loadImages(products.getImage(), viewHolder.productImage);
+        Picasso.with(context).load(products.getImage()).into(viewHolder.productImage);
         viewHolder.productDescription.setText(products.getDescription());
         viewHolder.productPrice.setText(context.getString(R.string.price, price));
         viewHolder.itemList.setClickable(true);
@@ -126,20 +121,4 @@ public class ProductAdapter extends BaseAdapter {
         View itemList;
     }
 
-    private void loadImages(ParseFile image, final ImageView imageView) {
-
-        if (image != null) {
-            image.getDataInBackground(new GetDataCallback() {
-                @Override
-                public void done(byte[] data, ParseException e) {
-                    if (e == null) {
-                        Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
-                        imageView.setImageBitmap(bmp);
-                    } else {
-                        Log.d(LOG_TAG, "Error: " + e.getMessage());
-                    }
-                }
-            });
-        }
-    }// load image
 }

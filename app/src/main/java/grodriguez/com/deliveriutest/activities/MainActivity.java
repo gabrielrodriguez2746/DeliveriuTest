@@ -124,11 +124,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      */
     private void getProducts() {
         searchQuery = Constants.PRODUCTS_ID;
-        for (int i = 0; i < categoriesList.size(); i++) {
-            ParseApplication.findInnerParse(this, Constants.TAG_CATEGORY_TABLE, Constants.TAG_NAME,
-                    categoriesList.get(i).getName(), Constants.TAG_PRODUCTS_TABLE,
-                    Constants.TAG_PRODUCTS_CATEGORIES);
-        }
+        ParseApplication.findInnerParse(this, Constants.TAG_CATEGORY_TABLE, Constants.TAG_NAME,
+                categoriesList.get(index).getName(), Constants.TAG_PRODUCTS_TABLE,
+                Constants.TAG_PRODUCTS_CATEGORIES);
         progressDialog.dismiss();
         menuFragmentAdapter.setCategoriesList(categoriesList);
         menuFragmentAdapter.notifyDataSetChanged();
@@ -151,7 +149,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     public void OnParseSimpleFindResult(List<ParseObject> objects, Exception e) {
         if (e == null) {
-            Log.d(LOG_TAG, "Object Size Categories Table " + objects.size());
             for (int category_item = 0; category_item < objects.size(); category_item++) {
                 Categories categories = new Categories(
                         category_item,
@@ -169,21 +166,25 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     public void OnParseInnerFindResult(List<ParseObject> objects, Exception e) {
         if (e == null) {
-            Log.d(LOG_TAG, "Object Size Products Table " + objects.size());
             ArrayList<Products> productsList = new ArrayList<>();
             for (int i = 0; i < objects.size(); i++) {
                 Products products = new Products(
                         objects.get(i).getObjectId(),
                         objects.get(i).getString(Constants.TAG_NAME),
                         objects.get(i).getString(Constants.TAG_DESCRIPTION),
-                        objects.get(i).getParseFile(Constants.TAG_IMAGE),
+                        objects.get(i).getParseFile(Constants.TAG_IMAGE).getUrl(),
                         objects.get(i).getInt(Constants.TAG_PRICE)
                 );
                 productsList.add(products);
             }
             categoriesList.get(index).setProducts(productsList);
+            Log.d(LOG_TAG, "Category List after Query " + index + " :: " + categoriesList.get(index));
             index++;
-            Log.d(LOG_TAG, categoriesList.toString());
+            if (index < categoriesList.size()) {
+                getProducts();
+            } else {
+                index = 0;
+            }
         } else {
             Log.d(LOG_TAG, "Error: " + e.getMessage());
         }

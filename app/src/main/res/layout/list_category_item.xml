@@ -24,8 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
-        android:text="@string/placeholder_category_name"
-        android:textSize="@dimen/list_item_text_size" />
+        android:text="@string/placeholder_category_name" />
 
 
 </LinearLayout>
