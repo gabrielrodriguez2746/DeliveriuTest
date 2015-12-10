@@ -53,7 +53,7 @@ public class ProductFragment extends Fragment {
         TextView product_resume_message = (TextView) header.findViewById(R.id.header_resume_message);
         product_resume_message.setText(getActivity().getString(R.string.product_resume_message));
         product_resume_message.setVisibility(View.VISIBLE);
-        listView.addHeaderView(header);
+        listView.addHeaderView(header, null, false);
         listView.setAdapter(new ProductAdapter(productsList, (OnFragmentInteractionListener) getActivity(),
                 getContext()));
         Log.d(LOG_TAG, "Creating the Fragment");

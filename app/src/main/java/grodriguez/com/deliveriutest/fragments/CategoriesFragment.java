@@ -54,7 +54,7 @@ public class CategoriesFragment extends Fragment {
         View header = getActivity().getLayoutInflater().inflate(R.layout.list_view_header, null);
         ((TextView) header.findViewById(R.id.header_message)).setText(getActivity().
                 getString(R.string.category_message));
-        listView.addHeaderView(header);
+        listView.addHeaderView(header, null, false);
         listView.setAdapter(new CategoriesAdapter(categoriesList, ((OnFragmentInteractionListener) getActivity()),
                 view.getContext()));
         Log.d(LOG_TAG, "Creating the Fragment");
