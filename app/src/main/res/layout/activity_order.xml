@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/actionbar_layout"
+        android:id="@+id/action_bar"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/action_bar">
+
+        <grodriguez.com.deliveriutest.widget.CustomTextView
+            style="@style/TitleBookFont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/not_products"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"/>
+
+    </FrameLayout>
+
+</RelativeLayout>
