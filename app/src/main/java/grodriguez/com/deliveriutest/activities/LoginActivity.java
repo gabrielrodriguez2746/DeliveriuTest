@@ -3,6 +3,7 @@ package grodriguez.com.deliveriutest.activities;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -54,6 +55,12 @@ public class LoginActivity extends FragmentActivity implements FacebookCallback<
     private String name;
     private String password;
 
+    /**
+     * Shared Preference
+     */
+    public static SharedPreferences pref;
+    public static SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +93,13 @@ public class LoginActivity extends FragmentActivity implements FacebookCallback<
         progressDialog.setMessage(this.getString(R.string.loading));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setCancelable(false);
+
+        /**
+         * Preference
+         */
+        pref = getApplicationContext().getSharedPreferences(Constants.TAG_SHARE_PREFERENCE_NAME,
+                MODE_PRIVATE);
+        editor = pref.edit();
     }
 
 
@@ -160,6 +174,8 @@ public class LoginActivity extends FragmentActivity implements FacebookCallback<
                 }
                 break;
             case R.id.without_register:
+                editor.putString(Constants.TAG_LOGIN_STATUS, Constants.TAG_UN_LOGGED);
+                editor.commit();
                 BeginActivity(MainActivity.class, null, true);
                 break;
             case R.id.sign_up:
@@ -220,6 +236,8 @@ public class LoginActivity extends FragmentActivity implements FacebookCallback<
             progressDialog.dismiss();
             Log.d(LOG_TAG, user.toString());
             Toast.makeText(this, getString(R.string.successfully_login), Toast.LENGTH_LONG).show();
+            editor.putString(Constants.TAG_LOGIN_STATUS, Constants.TAG_LOGGED);
+            editor.commit();
             BeginActivity(MainActivity.class, null, true);
 
         } else {

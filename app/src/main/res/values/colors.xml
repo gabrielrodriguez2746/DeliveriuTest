@@ -15,4 +15,12 @@
     <color name="red_button_start">#ff6b35</color>
     <color name="red_button_end">#f42434</color>
     <color name="subtitle_red">#f42534</color>
+
+    <color name="green_button_start">#8ce0b0</color>
+    <color name="green_button_end">#00c98a</color>
+
+    <!-- Stepper colors -->
+    <color name="stepper_color">@color/green_button_start</color>
+    <color name="stepper_click_color">@color/green_button_end</color>
+
 </resources>

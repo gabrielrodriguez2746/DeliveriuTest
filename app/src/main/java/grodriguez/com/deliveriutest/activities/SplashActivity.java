@@ -1,6 +1,7 @@
 package grodriguez.com.deliveriutest.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
@@ -21,6 +22,11 @@ import grodriguez.com.deliveriutest.utils.Constants;
 public class SplashActivity extends FragmentActivity implements OnConfirmationDialogClickListener {
 
     private final String LOG_TAG = getClass().getSimpleName();
+    /**
+     * Shared Preference
+     */
+    public static SharedPreferences pref;
+    public static SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,13 @@ public class SplashActivity extends FragmentActivity implements OnConfirmationDi
             Log.d(LOG_TAG, "Error starting Parse Application " + e.getMessage());
         }
 
+        /**
+         * Preference
+         */
+        pref = getApplicationContext().getSharedPreferences(Constants.TAG_SHARE_PREFERENCE_NAME,
+                MODE_PRIVATE);
+        editor = pref.edit();
+
         if (ConnectionManager.isConnected(this)) {
             /**
              * Time Before Display Main Activity
@@ -44,16 +57,22 @@ public class SplashActivity extends FragmentActivity implements OnConfirmationDi
                 public void run() {
                     Log.d(LOG_TAG, "Checking if the user is login");
                     if (ParseAnonymousUtils.isLinked(ParseUser.getCurrentUser())) {
+                        editor.putString(Constants.TAG_LOGIN_STATUS, Constants.TAG_UN_LOGGED);
+                        editor.commit();
                         Intent loginIntent = new Intent(SplashActivity.this, LoginActivity.class);
                         startActivity(loginIntent);
                         finish();
                     } else {
                         ParseUser currentUser = ParseUser.getCurrentUser();
                         if (currentUser != null) {
+                            editor.putString(Constants.TAG_LOGIN_STATUS, Constants.TAG_LOGGED);
+                            editor.commit();
                             Intent menuIntent = new Intent(SplashActivity.this, MainActivity.class);
                             startActivity(menuIntent);
                             finish();
                         } else {
+                            editor.putString(Constants.TAG_LOGIN_STATUS, Constants.TAG_UN_LOGGED);
+                            editor.commit();
                             Intent loginIntent = new Intent(SplashActivity.this, LoginActivity.class);
                             startActivity(loginIntent);
                             finish();

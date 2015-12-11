@@ -47,5 +47,21 @@ public class Constants {
     public static final String TAG_FACEBOOK_LOGIN = "facebook_login";
     public static final String TAG_REGULAR_LOGIN = "regular_login";
 
+    /**
+     * Buttons Indicator
+     */
+    public static final int MINUS_ID = 0x01;
+    public static final int PLUS_ID = 0x02;
+    public static final int REMOVE_ID = 0x03;
+
+    /**
+     * Shared Preference
+     */
+    public static final String TAG_SHARE_PREFERENCE_NAME = "ParsePref";
+    public static final String TAG_LOGIN_STATUS = "login_status";
+    public static final String TAG_LOGGED = "logged";
+    public static final String TAG_UN_LOGGED = "un_logged";
+    public static final String TAG_NOT_INITIALIZE = "not_initialize";
+
 
 }

@@ -3,8 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/actionbar_layout"
-        android:id="@+id/action_bar"/>
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/actionbar_layout" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -13,11 +14,26 @@
 
         <grodriguez.com.deliveriutest.widget.CustomTextView
             style="@style/TitleBookFont"
+            android:id="@+id/notification_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/not_products"
             android:layout_gravity="center_vertical"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:text="@string/not_products" />
+
+        <ListView
+            android:id="@+id/order_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/view_margin"
+            android:layout_marginLeft="@dimen/listview_margin"
+            android:layout_marginRight="@dimen/listview_margin"
+            android:layout_marginTop="@dimen/view_margin"
+            android:dividerHeight="2dp"
+            android:scrollbars="none"
+            android:visibility="gone">
+
+        </ListView>
 
     </FrameLayout>
 

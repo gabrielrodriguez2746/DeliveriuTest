@@ -6,7 +6,6 @@ import android.content.Context;
 import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.Parse;
-import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -16,9 +15,9 @@ import com.parse.SignUpCallback;
 import java.util.List;
 
 import grodriguez.com.deliveriutest.R;
+import grodriguez.com.deliveriutest.listeners.OnFindQueryParse;
 import grodriguez.com.deliveriutest.listeners.OnParseSignInResult;
 import grodriguez.com.deliveriutest.listeners.OnParseSignUpResult;
-import grodriguez.com.deliveriutest.listeners.OnFindQueryParse;
 import grodriguez.com.deliveriutest.utils.FieldValidator;
 
 /**
@@ -40,7 +39,6 @@ public class ParseApplication extends Application {
             Parse.initialize(context, context.getString(R.string.parse_application_id),
                     context.getString(R.string.parse_client_key));
             ParseUser.enableAutomaticUser();
-            ParseACL defaultACL = new ParseACL();
         } catch (Exception e) {
             throw e;
         }

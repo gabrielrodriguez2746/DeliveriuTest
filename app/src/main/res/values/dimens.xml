@@ -32,5 +32,12 @@
     <dimen name="image_size_width">30dp</dimen>
     <!-- Drawer dimens -->
     <dimen name="drawer_width">240dp</dimen>
+    <!-- Stepper buttons dimens -->
+    <dimen name="stepper_corner_radius">4dp</dimen>
+    <!-- Quantity Buttons-->
+    <dimen name="button_width">50dp</dimen>
+    <dimen name="button_height">40dp</dimen>
+    <dimen name="text_size">24sp</dimen>
+
 
 </resources>

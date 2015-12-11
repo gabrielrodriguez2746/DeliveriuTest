@@ -1,13 +1,12 @@
 package grodriguez.com.deliveriutest.adapters;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -15,7 +14,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import grodriguez.com.deliveriutest.R;
-import grodriguez.com.deliveriutest.listeners.OnFragmentInteractionListener;
+import grodriguez.com.deliveriutest.listeners.OnOrderButtonListener;
 import grodriguez.com.deliveriutest.models.Products;
 import grodriguez.com.deliveriutest.utils.Constants;
 
@@ -23,19 +22,18 @@ import grodriguez.com.deliveriutest.utils.Constants;
  * @author Gabriel Rodriguez
  * @version 1.0
  */
-public class ProductAdapter extends BaseAdapter {
+public class OrderAdapter extends BaseAdapter {
 
     private final String LOG_TAG = getClass().getSimpleName();
     private ArrayList<Products> productList;
-    OnFragmentInteractionListener onFragmentInteractionListener;
+    OnOrderButtonListener onOrderButtonListener;
     private Context context;
     private LayoutInflater layoutInflater;
-    public static SharedPreferences pref;
 
-    public ProductAdapter(ArrayList<Products> productList,
-                          OnFragmentInteractionListener onFragmentInteractionListener, Context context) {
+    public OrderAdapter(ArrayList<Products> productList,
+                        OnOrderButtonListener onOrderButtonListener, Context context) {
         this.productList = productList;
-        this.onFragmentInteractionListener = onFragmentInteractionListener;
+        this.onOrderButtonListener = onOrderButtonListener;
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
     }
@@ -69,54 +67,67 @@ public class ProductAdapter extends BaseAdapter {
         if (productList == null)
             return view;
         final Products products = productList.get(position);
-        ViewHolder viewHolder;
-        pref = context.getSharedPreferences(Constants.TAG_SHARE_PREFERENCE_NAME, 0);
-
+        final ViewHolder viewHolder;
         if (view == null) {
-            view = layoutInflater.inflate(R.layout.list_product_item, null);
+            view = layoutInflater.inflate(R.layout.list_order_item, null);
             viewHolder = new ViewHolder();
             viewHolder.productName = (TextView) view.findViewById(R.id.product_name);
             viewHolder.productPrice = (TextView) view.findViewById(R.id.product_price);
-            viewHolder.productDescription = (TextView) view.findViewById(R.id.product_description);
             viewHolder.productImage = (ImageView) view.findViewById(R.id.product_image);
-            viewHolder.shipButton = (LinearLayout) view.findViewById(R.id.ship_button);
-            viewHolder.shipMessage = (TextView) view.findViewById(R.id.product_order);
+            viewHolder.quantityCount = (TextView) view.findViewById(R.id.quantity);
+            viewHolder.plusButton = (Button) view.findViewById(R.id.plus);
+            viewHolder.minusButton = (Button) view.findViewById(R.id.minus);
+            viewHolder.removeButton = (ImageView) view.findViewById(R.id.remove);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        String loginStatus = pref.getString(Constants.TAG_LOGIN_STATUS, Constants.TAG_NOT_INITIALIZE);
 
-        if (loginStatus.equals(Constants.TAG_LOGGED)) {
-            viewHolder.shipButton.setVisibility(View.VISIBLE);
-        } else {
-            viewHolder.shipButton.setVisibility(View.GONE);
-        }
-
+        final int quantity = products.getQuantity();
         String price = Integer.toString(products.getPrice());
         viewHolder.productName.setText(products.getName());
         viewHolder.productName.setSelected(true);
         Picasso.with(context).load(products.getImage()).into(viewHolder.productImage);
-        viewHolder.productDescription.setText(products.getDescription());
         viewHolder.productPrice.setText(context.getString(R.string.price, price));
-        viewHolder.shipButton.setClickable(true);
-        viewHolder.shipButton.setOnClickListener(new View.OnClickListener() {
+        viewHolder.quantityCount.setText(context.getString(R.string.quantity, quantity));
+        viewHolder.plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onFragmentInteractionListener.onShippingSelected(products, Constants.PRODUCTS_ID);
+                int increment =  quantity;
+                increment++;
+                viewHolder.quantityCount.setText(context.getString(R.string.quantity, increment));
+                onOrderButtonListener.OnOrderButtonSelected(Constants.PLUS_ID, position, increment);
             }
         });
-        viewHolder.shipMessage.setSelected(true);
+        viewHolder.minusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int decrement =  quantity;
+                if (decrement > 1){
+                    decrement--;
+                }
+                viewHolder.quantityCount.setText(context.getString(R.string.quantity, decrement));
+                onOrderButtonListener.OnOrderButtonSelected(Constants.MINUS_ID, position, decrement);
+            }
+        });
+        viewHolder.removeButton.setClickable(true);
+        viewHolder.removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onOrderButtonListener.OnOrderButtonSelected(Constants.REMOVE_ID, position, quantity);
+            }
+        });
         return view;
     }
 
     static class ViewHolder {
         ImageView productImage;
         TextView productName;
-        TextView productDescription;
         TextView productPrice;
-        TextView shipMessage;
-        LinearLayout shipButton;
+        TextView quantityCount;
+        Button minusButton;
+        Button plusButton;
+        ImageView removeButton;
     }
 
 }

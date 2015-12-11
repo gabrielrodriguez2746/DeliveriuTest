@@ -55,10 +55,14 @@
     <string name="order_added_confirmation">Producto añadido exitosamente a su orden</string>
     <string name="order_already_added_confirmation">Producto añadido anteriormente a tu orden</string>
     <!--Log out message-->
-    <string name="exit_message">¿Está seguro que desea salir? \n Usted será deslogueado</string>
+    <string name="exit_message">¿Está seguro que desea salir?</string>
+    <string name="exit_message_user">¿Está seguro que desea salir? \n Usted será deslogueado</string>
     <!-- Lateral Menu-->
     <string name="lateral_menu_title">Menu de Opciones</string>
     <!-- Order Activity-->
     <string name="not_products">No hay productos añadidos a la orden</string>
+    <string name="header_order_message">Genere su orden</string>
+    <string name="header_order_resume_message">Borre algunos productos o escoja la cantidad que desee</string>
+    <string name="quantity">Cantidad: %1$s</string>
 
 </resources>

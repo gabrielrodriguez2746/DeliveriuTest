@@ -2,6 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/list_item_selector"
+    android:minHeight="?android:listPreferredItemHeight"
+    android:gravity="center_vertical"
     android:padding="@dimen/view_margin">
 
     <ImageView
@@ -9,11 +12,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/view_margin"
+
         android:src="@drawable/ic_delivery" />
 
     <grodriguez.com.deliveriutest.widget.CustomTextView
-        style="@style/TitleBookFont"
         android:id="@+id/item_title"
+        style="@style/TitleBookFont"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/caret_icon"

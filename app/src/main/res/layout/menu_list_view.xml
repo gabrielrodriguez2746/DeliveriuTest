@@ -12,7 +12,6 @@
         android:layout_marginLeft="@dimen/listview_margin"
         android:layout_marginRight="@dimen/listview_margin"
         android:layout_marginTop="@dimen/view_margin"
-        android:background="@drawable/list_item_selector"
         android:dividerHeight="2dp"
         android:scrollbars="none" />
 

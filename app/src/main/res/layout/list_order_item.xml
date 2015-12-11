@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item_list_product"
     android:layout_width="match_parent"
@@ -16,6 +15,7 @@
         android:orientation="horizontal"
         android:paddingLeft="@dimen/view_margin"
         android:paddingRight="@dimen/view_margin"
+        android:paddingBottom="@dimen/view_margin"
         android:weightSum="5">
 
 
@@ -63,40 +63,58 @@
             android:id="@+id/ship_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="top"
             android:layout_weight="2"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/remove"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="@dimen/view_margin"
-                android:src="@drawable/ic_delivery" />
+                android:layout_gravity="end"
+                android:clickable="true"
+                android:src="@android:drawable/ic_delete" />
 
             <grodriguez.com.deliveriutest.widget.CustomTextView
-                android:id="@+id/product_order"
+                android:id="@+id/quantity"
                 style="@style/TitleBookFont"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ellipsize="marquee"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:singleLine="true"
-                android:text="@string/order"
-                android:textColor="@color/subtitle_red"
-                android:textSize="@dimen/confirmation_message_text_size" />
+                android:layout_marginBottom="@dimen/view_margin"
+                android:gravity="center_horizontal"
+                android:text="@string/placeholder_quantity" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/minus"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/button_height"
+                    android:background="@drawable/minus_button"
+                    android:gravity="center"
+                    android:text="－"
+                    android:textColor="@color/stepper_color"
+                    android:textSize="@dimen/text_size" />
+
+                <Button
+                    android:id="@+id/plus"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/button_height"
+                    android:background="@drawable/plus_button"
+                    android:gravity="center"
+                    android:text="＋"
+                    android:textColor="@color/stepper_color"
+                    android:textSize="@dimen/text_size" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
     </LinearLayout>
-
-    <grodriguez.com.deliveriutest.widget.CustomTextView
-        android:id="@+id/product_description"
-        style="@style/TitleBookFont"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/view_margin"
-        android:text="@string/placeholder_product_description" />
-
 
 </LinearLayout>

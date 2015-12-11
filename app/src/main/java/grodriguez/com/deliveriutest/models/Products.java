@@ -14,13 +14,15 @@ public class Products implements Serializable {
     private String description;
     private String image;
     private int price;
+    private int quantity;
 
-    public Products(String id, String name, String description, String image, int price) {
+    public Products(String id, String name, String description, String image, int price, int quantity) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.image = image;
         this.price = price;
+        this.quantity = quantity;
     }
 
     public String getName() {
@@ -63,6 +65,14 @@ public class Products implements Serializable {
         this.price = price;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public String toString() {
         return "Products{" +
@@ -71,6 +81,7 @@ public class Products implements Serializable {
                 ", description='" + description + '\'' +
                 ", image='" + image + '\'' +
                 ", price=" + price +
+                ", quantity=" + quantity +
                 '}';
     }
 }
